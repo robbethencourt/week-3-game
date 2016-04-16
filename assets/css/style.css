@@ -1,0 +1,32 @@
+body {
+	color: #fff;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background: #1A1B1C;
+}
+
+/* navbar */
+.navbar {
+	border: none;
+	background: none;
+}
+
+	.navbar-default .navbar-brand {
+    	color: #fff;
+	}
+
+
+/* word */
+#word {
+	font-size: 15em;
+	word-wrap: break-word;
+}
+
+
+/* letters used */
+#letters_used {
+	padding: 0.5em 0;
+	font-size: 20em;
+	font-weight: bold;
+	line-height: 0.75em;
+	word-wrap: break-word;
+}
