@@ -18,6 +18,7 @@ body {
 /* word */
 #word {
 	font-size: 15em;
+	font-style: italic;
 	word-wrap: break-word;
 }
 
