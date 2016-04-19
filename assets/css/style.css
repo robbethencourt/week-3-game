@@ -6,6 +6,7 @@ body {
 
 /* navbar */
 .navbar {
+	margin-bottom: 0;
 	border: none;
 	background: none;
 }
@@ -14,10 +15,31 @@ body {
     	color: #fff;
 	}
 
+	.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    	color: #fff;
+	}
+
+
+/* tweleve columns of countdown */
+.twelve-countdown {
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+}
+
+	.twelve-countdown .col-xs-1 {
+		height: 100vh;
+		background: #ff0000;
+	}
+
+	.twelve-countdown .red-col:nth-child(1), .twelve-countdown .red-col:nth-child(2), .twelve-countdown .red-col:nth-child(3), .twelve-countdown .red-col:nth-child(4), .twelve-countdown .red-col:nth-child(5), .twelve-countdown .red-col:nth-child(6), .twelve-countdown .red-col:nth-child(7), .twelve-countdown .red-col:nth-child(8), .twelve-countdown .red-col:nth-child(9), .twelve-countdown .red-col:nth-child(10), .twelve-countdown .red-col:nth-child(11), .twelve-countdown .red-col:nth-child(12) {
+		opacity: 0;
+	}
+
 
 /* word */
 #word {
-	font-size: 15em;
+	font-size: 14vw;
 	font-style: italic;
 	word-wrap: break-word;
 }
@@ -26,7 +48,7 @@ body {
 /* letters used */
 #letters_used {
 	padding: 0.5em 0;
-	font-size: 20em;
+	font-size: 18vw;
 	font-weight: bold;
 	line-height: 0.75em;
 	word-wrap: break-word;
