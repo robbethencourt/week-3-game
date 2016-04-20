@@ -53,6 +53,29 @@ var hangman = {
 		letters_used.appendChild(letters_used_node);
 	},
 
+	updateGame: function () {
+
+		var red_col = document.getElementsByClassName("red-col");
+
+		var overlay_word = document.getElementById("overlay-word");
+		var overlay_fact = document.getElementById("overlay-fact");
+		
+		overlay_word.innerHTML = hangman.word;
+		overlay_fact.innerHTML = hangman.wordmessage[hangman.words.indexOf(hangman.word)];
+		hangman.spaces = [];
+		hangman.word = "";
+		hangman.turns = 12;
+		var letters_used = document.getElementById("letters_used");
+		letters_used.innerHTML = "";
+		hangman.randomWord();
+		hangman.wordSpaces();
+		hangman.updateTurns();
+		for (var i = 0; i < 12; i++) {
+			red_col[i].style.opacity = 0;
+		}
+		
+	},
+
 	gameMechanics: function (letter_to_check) {
 
 		var word_length = this.word.length;
@@ -61,25 +84,7 @@ var hangman = {
 		var red_col = document.getElementsByClassName("red-col");
 
 		var overlay_div = document.getElementById("overlay");
-		var overlay_word = document.getElementById("overlay-word");
 		var game_over_message = document.getElementById("game-over-message");
-		var overlay_fact = document.getElementById("overlay-fact");
-
-		function updateGame() {
-			overlay_word.innerHTML = hangman.word;
-			overlay_fact.innerHTML = hangman.wordmessage[hangman.words.indexOf(hangman.word)];
-			hangman.spaces = [];
-			hangman.word = "";
-			hangman.turns = 12;
-			var letters_used = document.getElementById("letters_used");
-			letters_used.innerHTML = "";
-			hangman.randomWord();
-			hangman.wordSpaces();
-			hangman.updateTurns();
-			for (var i = 0; i < 12; i++) {
-				red_col[i].style.opacity = 0;
-			}
-		}
 
 		// loop through the random word and check if the entered letter matches any in the randomly selected word
 		for (var i = 0; i < word_length; i++) {
@@ -119,7 +124,7 @@ var hangman = {
 
 			// if the counter has reached 0 (we need to reset the game)
 			if (hangman.turns < 1) {
-				updateGame();
+				hangman.updateGame();
 				// display the overlay
 				overlay_div.style.background = "#ff0000";
 				game_over_message.innerHTML = hangman.gomessage[1];
@@ -130,7 +135,7 @@ var hangman = {
 		if (this.spaces.join("") === this.word) {
 			this.wins++;
 			hangman.updateWins();
-			updateGame();
+			hangman.updateGame();
 			// display the overlay
 			overlay_div.style.background = "#1A1B1C";
 			game_over_message.innerHTML = hangman.gomessage[0];
