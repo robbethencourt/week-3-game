@@ -20,29 +20,6 @@ body {
 	}
 
 
-/* background letterforms */
-.bg-letterforms {
-	position: absolute;
-}
-
-	.bg-letterforms h1 {
-		overflow: hidden;
-		position: absolute;
-		padding: 0;
-		margin: 0;
-		color: #fff;
-		font-size: 100em;
-		font-weight: bold;
-		line-height: 1em;
-		white-space: nowrap;
-	}
-
-	.lf-r {
-		opacity: .02;
-	}
-
-
-
 /* tweleve columns of countdown */
 .twelve-countdown {
 	height: 100vh;
@@ -62,7 +39,7 @@ body {
 
 /* word */
 #word {
-	margin: 0;
+	margin: 0 0 0 20px;
 	font-size: 13vw;
 	font-style: italic;
 	word-wrap: break-word;
@@ -71,6 +48,7 @@ body {
 
 /* letters used */
 #letters_used {
+	margin-left: -15px;
 	padding: 0;
 	font-size: 15.5vw;
 	font-weight: bold;
@@ -109,13 +87,14 @@ body {
 		font-style: italic;
 	}
 
-	.btn-default {
+	.btn-default, .btn-default:active, .btn-default:focus {
 		color: #fff;
 		border: 2px solid #fff;
 		background: none;
+		outline: none;
 	}
 
-	.btn-default:hover, .btn-default:active {
+	.btn-default:hover, .btn-default:active:hover {
 		color: #000;
 		border-color: #fff;
 		background: #fff;
