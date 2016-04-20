@@ -12,6 +12,7 @@ var hangman = {
 	turns: 12,
 	gomessage: ["You Got It", "Boo"],
 	wordmessage: ["Frutiger is a series of typefaces named after its Swiss designer, Adrian Frutiger. Frutiger is a humanist sans-serif typeface, intended to be clear and highly legible at a distance or at small text sizes.", "Helvetica is a widely used sans-serif typeface developed in 1957 by Swiss typeface designer Max Miedinger with input from Eduard Hoffmann.", "Futura is a geometric sans-serif typeface designed in 1927 by Paul Renner. It was designed as a contribution on the New Frankfurt-project.", "Arial, sometimes marketed or displayed in software as Arial MT, is a sans-serif typeface and set of computer fonts.", "Verdana is a humanist sans-serif typeface designed by Matthew Carter for Microsoft Corporation, with hand-hinting done by Thomas Rickner, then at Monotype.", "Univers is the name of a sans-serif typeface designed by Adrian Frutiger in 1954. Classified as a neo-grotesque typeface, one based on the model of the 1898 typeface Akzidenz-Grotesk.", "Avenir is a geometric sans-serif typeface designed by Adrian Frutiger in 1988 and released by Linotype GmbH, now a subsidiary of Monotype Corporation. The word avenir is French for 'future'.", "Optima is a humanist sans-serif typeface designed by Hermann Zapf and released between 1952 and 1955 for the D. Stempel AG foundry, Frankfurt, Germany.", "FF Meta is a humanist sans-serif typeface family designed by Erik Spiekermann and released in 1991[1] through his FontFont library. According to Spiekermann, FF Meta was intended to be a 'complete antithesis of Helvetica,' which he found 'boring and bland.'", "Akzidenz-Grotesk is a grotesque typeface originally released by the Berthold Type Foundry in 1896 under the name Accidenz-Grotesk."],
+	sounds: ["assets/sounds/win.mp3", "assets/sounds/lose.mp3"],
 
 	// randomly choose a word in the words array
 	randomWord: function() {
@@ -163,6 +164,8 @@ var hangman = {
 				overlay_div.style.background = "#ff0000";
 				game_over_message.innerHTML = hangman.gomessage[1];
 				overlay_div.style.opacity = 1;
+				var lose_sound = new Audio(this.sounds[1]);
+				lose_sound.play();
 			}
 		}
 
@@ -177,6 +180,8 @@ var hangman = {
 			overlay_div.style.background = "#1A1B1C";
 			game_over_message.innerHTML = hangman.gomessage[0];
 			overlay_div.style.opacity = 1;
+			var win_sound = new Audio(this.sounds[0]);
+			win_sound.play();
 		}
 	}
 }
