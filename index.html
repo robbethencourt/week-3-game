@@ -20,6 +20,12 @@
 	</head>
 <body>
 
+	<!-- background letterforms 
+	<div class="bg-letterforms">
+		<h1 class="lf-r">akzidenz</h1>
+	</div>
+	-->
+
 	<!-- 12 columns for countdown -->
 	<div class="twelve-countdown">
 		<div class="clearfix"> <!-- using clearfix instead of row so the margins don't stretch beyond the screen. I need this as the container-fluid would leave some space on the edges -->
@@ -69,7 +75,6 @@
 		</div>
 	</div>
 
-
 	<!-- letters used -->
 	<div class="container-fluid">
 		<div class="row">
@@ -77,6 +82,14 @@
 				<p id="letters_used"></p>
 			</div>
 		</div>
+	</div>
+
+	<!-- overlay -->
+	<div id="overlay">
+		<h2 id="overlay-word"></h2>
+		<h4 id="game-over-message"></h4>
+		<p id="overlay-fact">This is some stuff about frutiger and how it relates to typeface design as a whole. I need some good text here for each of the words I plan to use.</p>
+		<button class="btn btn-default btn-lg" id="close-overlay">Close Window and Play Again!</button>
 	</div>
 
 	<script type="text/javascript" src="assets/javascript/game.js"></script>

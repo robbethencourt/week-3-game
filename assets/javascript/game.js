@@ -9,6 +9,8 @@ var hangman = {
 	spaces: [],
 	wins: 0,
 	turns: 12,
+	gomessage: ["Congratulation! You Got It!", "Boo!"],
+	wordmessage: ["frutiger message", "helvetica message", "futura message", "arial message", "verdana message", "univers message", "avenir message", "optima message", "meta message", "akzidenz message"],
 
 	// randomly choose a word in the words array
 	randomWord: function() {
@@ -57,9 +59,15 @@ var hangman = {
 		var counter = 0;
 
 		var red_col = document.getElementsByClassName("red-col");
-		console.log(red_col.length);
+
+		var overlay_div = document.getElementById("overlay");
+		var overlay_word = document.getElementById("overlay-word");
+		var game_over_message = document.getElementById("game-over-message");
+		var overlay_fact = document.getElementById("overlay-fact");
 
 		function updateGame() {
+			overlay_word.innerHTML = hangman.word;
+			overlay_fact.innerHTML = hangman.wordmessage[hangman.words.indexOf(hangman.word)];
 			hangman.spaces = [];
 			hangman.word = "";
 			hangman.turns = 12;
@@ -112,6 +120,10 @@ var hangman = {
 			// if the counter has reached 0 (we need to reset the game)
 			if (hangman.turns < 1) {
 				updateGame();
+				// display the overlay
+				overlay_div.style.background = "#ff0000";
+				game_over_message.innerHTML = hangman.gomessage[1];
+				overlay_div.style.opacity = 1;
 			}
 		}
 
@@ -119,6 +131,10 @@ var hangman = {
 			this.wins++;
 			hangman.updateWins();
 			updateGame();
+			// display the overlay
+			overlay_div.style.background = "#1A1B1C";
+			game_over_message.innerHTML = hangman.gomessage[0];
+			overlay_div.style.opacity = 1;
 		}
 	}
 
@@ -141,3 +157,11 @@ hangman.randomWord();
 hangman.wordSpaces();
 hangman.updateWins();
 hangman.updateTurns();
+
+// this closes the overlay after the game is over
+var close_overlay = document.getElementById("close-overlay");
+
+close_overlay.onclick = function() {
+	var overlay_div = document.getElementById("overlay");
+	overlay_div.style.opacity = 0;
+}

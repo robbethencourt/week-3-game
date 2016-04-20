@@ -20,6 +20,29 @@ body {
 	}
 
 
+/* background letterforms */
+.bg-letterforms {
+	position: absolute;
+}
+
+	.bg-letterforms h1 {
+		overflow: hidden;
+		position: absolute;
+		padding: 0;
+		margin: 0;
+		color: #fff;
+		font-size: 100em;
+		font-weight: bold;
+		line-height: 1em;
+		white-space: nowrap;
+	}
+
+	.lf-r {
+		opacity: .02;
+	}
+
+
+
 /* tweleve columns of countdown */
 .twelve-countdown {
 	height: 100vh;
@@ -39,7 +62,8 @@ body {
 
 /* word */
 #word {
-	font-size: 14vw;
+	margin: 0;
+	font-size: 13vw;
 	font-style: italic;
 	word-wrap: break-word;
 }
@@ -47,9 +71,53 @@ body {
 
 /* letters used */
 #letters_used {
-	padding: 0.5em 0;
-	font-size: 18vw;
+	padding: 0;
+	font-size: 15.5vw;
 	font-weight: bold;
 	line-height: 0.75em;
 	word-wrap: break-word;
 }
+
+
+/* overlay */
+#overlay {
+	transition: .3s;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+}
+
+	#overlay-word {
+		font-size: 15.5vw;
+		font-weight: bold;
+	}
+
+	#game-over-message {
+		padding: 2em 0;
+	}
+
+	#overlay-fact {
+		width: 30%;
+		margin: 0 auto;
+		padding: 2em 0;
+		font-size: 1.2em;
+		font-style: italic;
+	}
+
+	.btn-default {
+		color: #fff;
+		border: 2px solid #fff;
+		background: none;
+	}
+
+	.btn-default:hover, .btn-default:active {
+		color: #000;
+		border-color: #fff;
+		background: #fff;
+		outline: none;
+	}
