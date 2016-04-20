@@ -18,7 +18,7 @@ var hangman = {
 	randomWord: function() {
 
 		this.word = this.words[Math.floor(Math.random()*this.words.length)];
-	},
+	}, // end randomWord
 
 	// create uderscores for letters in word and spaces after each letter
 	wordSpaces: function() {
@@ -27,27 +27,27 @@ var hangman = {
 		for (var i = 0; i < this.word.length; i++) {
 
 			this.spaces.push("_");
-		}
+		} // end for loop
 
 		// append the appropriate number of spaces to the screen based on the randomly chosen word
 		var the_word_p = document.getElementById("word");
 		var the_word_node = document.createTextNode(this.spaces.join(" "));
 		the_word_p.innerHTML = this.spaces.join(" ");
-	},
+	}, // end wordSpaces
 
 	updateWins: function() {
 
 		// update wins on screen
 		var wins_p = document.getElementById('wins');
 		wins_p.innerHTML = this.wins;
-	},
+	}, // end updateWins
 
 	updateTurns: function() {
 
 		// display turns on screen
 		var turns_rem_p = document.getElementById("turns_rem");
 		turns_rem_p.innerHTML = this.turns;
-	},
+	}, // end updateTurns
 
 	lettersUsed: function (letter_to_pass) {
 		
@@ -58,7 +58,7 @@ var hangman = {
 
 		// display the lettersused array on the screen
 		letters_used.innerHTML = this.lettersused.join("");
-	},
+	}, // end lettersUsed
 
 	updateGame: function () {
 
@@ -82,9 +82,10 @@ var hangman = {
 
 		// loop through the columns and set their opacity to 0
 		for (var i = 0; i < 12; i++) {
+
 			red_col[i].style.opacity = 0;
-		}
-	},
+		} // end for loop
+	}, // end updateGame
 
 	gameMechanics: function (letter_to_check) {
 
@@ -106,8 +107,8 @@ var hangman = {
 
 				// if the letter entered has been used, then update the counter
 				lettersused_counter++;
-			}
-		}
+			} // end if
+		} // end for loop
 
 		// if the lettersused_counter is not greater than 0, that means the letter entered has not been used and can be compared to the word
 		if (lettersused_counter === 0) {
@@ -131,9 +132,9 @@ var hangman = {
 				} else {
 
 					counter++;
-				}
-			}
-		}
+				} // end if
+			} // end for loop
+		} // end if
 
 
 		// compare the counter to the length of the randomly selected word. If it's the same length, (meaning the entered letter didn't match any of the letters of the randomly selected word)
@@ -148,7 +149,7 @@ var hangman = {
 				// need to multiply the colums remaining minus original amount of columns so that the opacity increases correctly
 				var red_col_multiply = 12 - hangman.turns;
 				red_col[hangman.turns - 1].style.opacity = .09 * red_col_multiply;
-			}
+			} // end if
 
 			hangman.updateTurns();
 			counter = 0;
@@ -163,11 +164,11 @@ var hangman = {
 				// display the overlay
 				overlay_div.style.background = "#ff0000";
 				game_over_message.innerHTML = hangman.gomessage[1];
-				overlay_div.style.opacity = 1;
+				overlay_div.style.opacity = .9;
 				var lose_sound = new Audio(this.sounds[1]);
 				lose_sound.play();
-			}
-		}
+			} // end if
+		} // end if
 
 		// if the word has been uncovered the player wins, the congratulations screen shows and the game resets
 		if (this.spaces.join("") === this.word) {
@@ -179,11 +180,11 @@ var hangman = {
 			// display the overlay
 			overlay_div.style.background = "#1A1B1C";
 			game_over_message.innerHTML = hangman.gomessage[0];
-			overlay_div.style.opacity = 1;
+			overlay_div.style.opacity = .9;
 			var win_sound = new Audio(this.sounds[0]);
 			win_sound.play();
-		}
-	}
+		} // end if
+	} // end gameMechanics
 }
 
 // Captures Key Clicks

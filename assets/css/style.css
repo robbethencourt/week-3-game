@@ -4,19 +4,80 @@ body {
 	background: #1A1B1C;
 }
 
-/* navbar */
-.navbar {
-	margin-bottom: 0;
-	border: none;
-	background: none;
+
+/* letterforms background */
+.letterforms-bg {
+	position: absolute;
 }
 
-	.navbar-default .navbar-brand {
-    	color: #fff;
+	.letterforms-bg h5 {
+		position: fixed;
+		top: -250px;
+		overflow: hidden;
+		opacity: .5;
 	}
 
-	.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
-    	color: #fff;
+	.letterforms-bg h5:nth-of-type(1) { /* frutiger */
+		top: 5em;
+		font-size: 50em;
+		font-weight: bold;
+		color: #ff00e1;
+	}
+
+	.letterforms-bg h5:nth-of-type(2) { /* helvetica */
+		font-size: 70em;
+		font-weight: bold;
+		color: #0004FF;
+	}
+
+	.letterforms-bg h5:nth-of-type(3) { /* futura */
+		font-size: 45em;
+		font-weight: bold;
+		color: #AA00FF;
+	}
+
+	.letterforms-bg h5:nth-of-type(4) { /* arial */
+		font-size: 50em;
+		font-weight: bold;
+		color: #00FF22;
+	}
+
+	.letterforms-bg h5:nth-of-type(5) { /* verdana */
+		font-size: 45em;
+		font-weight: bold;
+		color: #00bfff;
+	}
+
+	.letterforms-bg h5:nth-of-type(6) { /* univers */
+		top: 2em;
+		left: 3em;
+		font-size: 30em;
+		font-weight: bold;
+		color: #ff0000;
+	}
+
+	.letterforms-bg h5:nth-of-type(7) { /* avenir */
+		font-size: 120em;
+		font-weight: bold;
+		color: #FF00EA;
+	}
+
+	.letterforms-bg h5:nth-of-type(8) { /* optima */
+		font-size: 110em;
+		font-weight: bold;
+		color: #FF4000;
+	}
+
+	.letterforms-bg h5:nth-of-type(9) { /* meta */
+		font-size: 60em;
+		font-weight: bold;
+		color: #00EEFF;
+	}
+
+	.letterforms-bg h5:nth-of-type(10) { /* akzidenz */
+		font-size: 90em;
+		font-weight: bold;
+		color: #EAFF00;
 	}
 
 
@@ -34,6 +95,22 @@ body {
 
 	.twelve-countdown .red-col:nth-child(1), .twelve-countdown .red-col:nth-child(2), .twelve-countdown .red-col:nth-child(3), .twelve-countdown .red-col:nth-child(4), .twelve-countdown .red-col:nth-child(5), .twelve-countdown .red-col:nth-child(6), .twelve-countdown .red-col:nth-child(7), .twelve-countdown .red-col:nth-child(8), .twelve-countdown .red-col:nth-child(9), .twelve-countdown .red-col:nth-child(10), .twelve-countdown .red-col:nth-child(11), .twelve-countdown .red-col:nth-child(12) {
 		opacity: 0;
+	}
+
+
+/* navbar */
+.navbar {
+	margin-bottom: 0;
+	border: none;
+	background: none;
+}
+
+	.navbar-default .navbar-brand {
+    	color: #fff;
+	}
+
+	.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    	color: #fff;
 	}
 
 
