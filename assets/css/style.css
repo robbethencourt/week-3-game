@@ -6,77 +6,69 @@ body {
 
 
 /* letterforms background */
-.letterforms-bg {
+#letterforms-bg {
 	position: absolute;
 }
 
-	.letterforms-bg h5 {
+	#letterforms-bg h5 {
 		position: fixed;
 		top: -250px;
 		overflow: hidden;
-		opacity: .5;
+		opacity: 0;
+		font-weight: bold;
 	}
 
-	.letterforms-bg h5:nth-of-type(1) { /* frutiger */
-		top: 5em;
+	#letterforms-bg h5:nth-of-type(1) { /* frutiger */
 		font-size: 50em;
-		font-weight: bold;
 		color: #ff00e1;
 	}
 
-	.letterforms-bg h5:nth-of-type(2) { /* helvetica */
+	#letterforms-bg h5:nth-of-type(2) { /* helvetica */
 		font-size: 70em;
-		font-weight: bold;
 		color: #0004FF;
 	}
 
-	.letterforms-bg h5:nth-of-type(3) { /* futura */
+	#letterforms-bg h5:nth-of-type(3) { /* futura */
 		font-size: 45em;
-		font-weight: bold;
 		color: #AA00FF;
 	}
 
-	.letterforms-bg h5:nth-of-type(4) { /* arial */
+	#letterforms-bg h5:nth-of-type(4) { /* arial */
 		font-size: 50em;
-		font-weight: bold;
 		color: #00FF22;
 	}
 
-	.letterforms-bg h5:nth-of-type(5) { /* verdana */
+	#letterforms-bg h5:nth-of-type(5) { /* verdana */
 		font-size: 45em;
-		font-weight: bold;
 		color: #00bfff;
 	}
 
-	.letterforms-bg h5:nth-of-type(6) { /* univers */
+	#letterforms-bg h5:nth-of-type(6) { /* univers */
 		top: 2em;
 		left: 3em;
 		font-size: 30em;
-		font-weight: bold;
 		color: #ff0000;
 	}
 
-	.letterforms-bg h5:nth-of-type(7) { /* avenir */
+	#letterforms-bg h5:nth-of-type(7) { /* avenir */
 		font-size: 120em;
-		font-weight: bold;
 		color: #FF00EA;
 	}
 
-	.letterforms-bg h5:nth-of-type(8) { /* optima */
+	#letterforms-bg h5:nth-of-type(8) { /* optima */
 		font-size: 110em;
-		font-weight: bold;
 		color: #FF4000;
 	}
 
-	.letterforms-bg h5:nth-of-type(9) { /* meta */
+	#letterforms-bg h5:nth-of-type(9) { /* meta */
+		left: -50px;
 		font-size: 60em;
-		font-weight: bold;
 		color: #00EEFF;
 	}
 
-	.letterforms-bg h5:nth-of-type(10) { /* akzidenz */
+	#letterforms-bg h5:nth-of-type(10) { /* akzidenz */
+		left: -100px;
 		font-size: 90em;
-		font-weight: bold;
 		color: #EAFF00;
 	}
 
@@ -177,3 +169,48 @@ body {
 		background: #fff;
 		outline: none;
 	}
+
+	#secret-message {
+		padding: 1.5em 0;
+    	font-size: 1.7em;
+	}
+
+		.sm-1 { /* b */
+			color: #ff00e1;
+		}
+
+		.sm-2 { /* a */
+			color: #0004FF;
+		}
+
+		.sm-3 { /* c */
+			color: #AA00FF;
+		}
+
+		.sm-4 { /* k */
+			color: #00FF22;
+		}
+
+		.sm-5 { /* g */
+			color: #00bfff;
+		}
+
+		.sm-6 { /* r */
+			color: #ff0000;
+		}
+
+		.sm-7 { /* o */
+			color: #FF00EA;
+		}
+
+		.sm-8 { /* u */
+			color: #FF4000;
+		}
+
+		.sm-9 { /* n */
+			color: #00EEFF;
+		}
+
+		.sm-10 { /* d */
+			color: #EAFF00;
+		}

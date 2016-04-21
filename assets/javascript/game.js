@@ -2,10 +2,10 @@
 // Created by Rob Bethencourt
 
 // Hangman object
-
 var hangman = {
 	words: ["frutiger", "helvetica", "futura", "arial", "verdana", "univers", "avenir", "optima", "meta", "akzidenz"],
 	word: "",
+	wordsguessed: [],
 	lettersused: [],
 	spaces: [],
 	wins: 0,
@@ -60,6 +60,24 @@ var hangman = {
 		letters_used.innerHTML = this.lettersused.join("");
 	}, // end lettersUsed
 
+	wordsGuessedArray: function () {
+
+		var wordsguessedcounter = 0;
+
+		for (var i = 0; i < this.wordsguessed.length; i++) {
+
+			if (this.word === this.wordsguessed[i]) {
+
+				wordsguessedcounter++;
+			} // end if
+		} // end for loop
+
+		if (wordsguessedcounter === 0) {
+
+			this.wordsguessed.push(this.word)
+		} // end if
+	},
+
 	updateGame: function () {
 
 		var overlay_word = document.getElementById("overlay-word");
@@ -97,8 +115,13 @@ var hangman = {
 
 		var red_col = document.getElementsByClassName("red-col");
 
+		var letterforms = document.getElementsByTagName("h5");
+
 		var overlay_div = document.getElementById("overlay");
 		var game_over_message = document.getElementById("game-over-message");
+		var secret_message = document.getElementById("secret-message");
+
+		var letterforms_bg = document.getElementById("letterforms-bg");
 
 		// loop through the letteres used to check if letter entered has been used (the - 1 is so that we don't check the letter that was just entered against itself)
 		for (var i = 0; i < letterused_length - 1; i++) {
@@ -141,29 +164,38 @@ var hangman = {
 		if (counter === word_length) {
 
 			// decrease the turn by one, updated the scree and reset the counter to 0
-			hangman.turns--;
+			this.turns--;
 
-			// need to reset the column opacity if the game ends, so need this check once hangman.turns is set to 0 and before hangman.updateTurns() gets called
-			if (hangman.turns > 0) {
+			// need to reset the column opacity if the game ends, so need this check once this.turns is set to 0 and before this.updateTurns() gets called
+			if (this.turns > 0) {
 
 				// need to multiply the colums remaining minus original amount of columns so that the opacity increases correctly
-				var red_col_multiply = 12 - hangman.turns;
-				red_col[hangman.turns - 1].style.opacity = .09 * red_col_multiply;
+				var red_col_multiply = 12 - this.turns;
+				red_col[this.turns - 1].style.opacity = .09 * red_col_multiply;
+
+				for (var i = 0; i < letterforms.length; i++) {
+					letterforms[i].style.opacity = .05 * red_col_multiply;
+				}
 			} // end if
 
-			hangman.updateTurns();
+			this.updateTurns();
 			counter = 0;
 
 			
 
 			// if the counter has reached 0 (we need to reset the game)
-			if (hangman.turns < 1) {
+			if (this.turns < 1) {
 
-				hangman.updateGame();
+				this.updateGame();
+
+				// updates the opacity to 0 for all background letteroforms
+				for (var i = 0; i < letterforms.length; i++) {
+					letterforms[i].style.opacity = 0;
+				} // end for loop
 
 				// display the overlay
 				overlay_div.style.background = "#ff0000";
-				game_over_message.innerHTML = hangman.gomessage[1];
+				game_over_message.innerHTML = this.gomessage[1];
 				overlay_div.style.opacity = .9;
 				var lose_sound = new Audio(this.sounds[1]);
 				lose_sound.play();
@@ -173,13 +205,47 @@ var hangman = {
 		// if the word has been uncovered the player wins, the congratulations screen shows and the game resets
 		if (this.spaces.join("") === this.word) {
 
+			// pushing the guessed words into an array to track when all the available words have been guessed
+			this.wordsGuessedArray();
+
+			var wordsguessedlength = this.wordsguessed.length;
+			var wordslength = this.words.length;
+			// if half the words have been guessed
+			if (wordsguessedlength >= wordslength / 2 && wordsguessedlength < wordslength) {
+
+					// add the secret message
+					secret_message.innerHTML = "You've guessed " + wordsguessedlength + " of the available words! Guess the other " + (wordslength - wordsguessedlength) + " to unlock the secret <span class='sm-1'>b</span><span class='sm-2'>a</span><span class='sm-3'>c</span><span class='sm-4'>k</span><span class='sm-5'>g</span><span class='sm-6'>r</span><span class='sm-7'>o</span><span class='sm-8'>u</span><span class='sm-9'>n</span><span class='sm-10'>d</span>.";
+			} // end if
+
+			// if all the words have been guessed
+			if (wordsguessedlength === wordslength) {
+
+					// add the secret message
+					secret_message.innerHTML = "You've guessed all the available words! You've unlocked the secret <span class='sm-1'>b</span><span class='sm-2'>a</span><span class='sm-3'>c</span><span class='sm-4'>k</span><span class='sm-5'>g</span><span class='sm-6'>r</span><span class='sm-7'>o</span><span class='sm-8'>u</span><span class='sm-9'>n</span><span class='sm-10'>d</span>.";
+
+					// add the h5 elements to the #letterforms-bg div. This is the secret background!!!!!
+					for (var i = 0; i < this.words.length; i++) {
+
+						var h5_el = document.createElement("h5");
+						var h5_text_node = document.createTextNode(this.word[i]);
+
+						h5_el.appendChild(h5_text_node);
+						letterforms_bg.appendChild(h5_el);
+					} // end for loop
+			} // end if
+
 			this.wins++;
-			hangman.updateWins();
-			hangman.updateGame();
+			this.updateWins();
+			this.updateGame();
+
+			// updates the opacity to 0 for all background letteroforms
+			for (var i = 0; i < letterforms.length; i++) {
+					letterforms[i].style.opacity = 0;
+				} // end for loop
 
 			// display the overlay
 			overlay_div.style.background = "#1A1B1C";
-			game_over_message.innerHTML = hangman.gomessage[0];
+			game_over_message.innerHTML = this.gomessage[0];
 			overlay_div.style.opacity = .9;
 			var win_sound = new Audio(this.sounds[0]);
 			win_sound.play();
